@@ -1,6 +1,6 @@
 # merchant API
 
-Payment Service Provider API built with NestJS, PostgreSQL, Redis/BullMQ.
+Merchant workflow API built with NestJS, PostgreSQL, Redis/BullMQ.
 
 ## Architecture
 
@@ -105,7 +105,7 @@ Control the KYB outcome by setting `legalBusinessName` to a keyword:
 | `outage` | Simulates provider outage (retried) |
 | `slow` | 4-second delay, then approved |
 
-## Seeding a User
+## Creating a User
 
-The database is seeded automatically on first run via TypeORM `synchronize`. To create a user, call `POST /auth/login` after manually inserting one, or add a seeder script.
+The API runs TypeORM migrations automatically on startup to create and update the database schema. It does not seed user or sample data. Create a user through `POST /auth/register` with an email, password, and role (`SALES`, `REVIEWER`, or `ADMIN`). See [the API docs](docs/api.md#auth) for the request format.
 # merchant-system
